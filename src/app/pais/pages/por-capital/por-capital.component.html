@@ -1,0 +1,28 @@
+<div>
+  <h2>Por capital</h2>
+  <hr />
+
+  <div class="row">
+    <div class="col">
+      <!-- Siempre que un componente tenga atributos entre parentesis y que no
+         son propios de html, es porque son outputs dentro de este mismo.
+         Mientras que en el caso del placeholder, este es un input para setear el placeholder-->
+      <app-pais-input
+        (onEnter)="buscar($event)"
+        (onDebounce)="sugerencias($event)"
+        placeholder="buscar por capital..."
+      ></app-pais-input>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div *ngIf="hayError" class="alert alert-danger">
+  No se encontro nada con el termino {{ termino }}
+</div>
+<div class="row" *ngIf="paises.length > 0">
+  <div class="col">
+    <app-pais-tabla [paises]="paises"></app-pais-tabla>
+  </div>
+</div>
